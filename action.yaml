@@ -13,6 +13,17 @@ inputs:
     description: "Project path, which contains project.config.json"
     required: false
     default: "."
+  page_path:
+    description: "Page path, one of the pages in app.json"
+    required: false
+  page_query:
+    description: "Page query"
+    required: false
+    default: ""
+  scene:
+    description: "Scene code"
+    required: false
+    default: 1011
   version:
     description: "Publish version"
     required: false
@@ -23,8 +34,6 @@ inputs:
 outputs:
   preview_qrcode:
     description: "Preview the QR code of the MiniProgram"
-  source_map_path:
-    description: "Generated SourceMap file path"
 runs:
   using: "node16"
-  main: "./index.ts"
+  main: "index.js"
