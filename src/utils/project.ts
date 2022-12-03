@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 import { readJSON } from './json';
-import { getProjectConfigPath, getMiniProgramRootPath } from './path';
+import { getProjectConfigPath, getMiniProgramRootPath, getPackageConfigPath } from './path';
 import type { Project, ProjectConfig } from '../types';
 
 export function readProjectConfig(rootPath: string): ProjectConfig {
@@ -29,4 +29,8 @@ export function createProject(rootPath: string, projectConfig: ProjectConfig): P
     privateKey: process.env.PRIVATE_KEY || '',
     ignores: ['node_modules/**/*'],
   };
+}
+
+export function hasPackageJSON(rootPath: string): boolean {
+  return fs.existsSync(getPackageConfigPath(rootPath));
 }

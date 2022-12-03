@@ -21,6 +21,10 @@ export function getProjectConfigPath(projectPath: string): string {
   return path.join(projectPath, 'project.config.json')
 }
 
+export function getPackageConfigPath(projectPath: string): string {
+  return path.join(projectPath, 'package.json');
+}
+
 function getTemporaryFileName(type: string, appID: string, ext: string): string {
   const timestamp = Date.now();
 

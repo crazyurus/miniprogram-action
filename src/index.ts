@@ -1,7 +1,7 @@
 import * as core from '@actions/core';
 import * as actions from './actions';
 import { getProjectPath } from './utils/path';
-import { readProjectConfig, createProject } from './utils/project';
+import { readProjectConfig, createProject, hasPackageJSON } from './utils/project';
 import { getCompileOptions, getCIBot, getThreads } from './utils/context';
 import type { ActionType, ActionContext } from './types';
 
@@ -22,6 +22,10 @@ async function activate(): Promise<void> {
   };
 
   try {
+    if (hasPackageJSON(project.projectPath)) {
+      await actions.npm(context);
+    }
+
     await actions[actionType](context);
   } catch (error) {
     core.setFailed(error);

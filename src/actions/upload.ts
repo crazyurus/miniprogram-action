@@ -1,8 +1,11 @@
 import * as ci from 'miniprogram-ci';
+import * as core from '@actions/core';
 import type { ActionContext } from '../types';
 
 async function upload(context: ActionContext): Promise<void> {
   const project = new ci.Project(context.project);
+
+  core.info('start upload');
 
   await ci.upload({
     project,

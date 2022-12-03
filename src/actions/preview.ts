@@ -11,6 +11,8 @@ async function preview(context: ActionContext): Promise<void> {
   const scene = Number(core.getInput('scene')) || 1011;
   const tempImagePath = getTemporaryPath(project.appid);
 
+  core.info('start preview');
+
   await ci.preview({
     project,
     version: context.version,
