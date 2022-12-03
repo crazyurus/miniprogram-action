@@ -1,6 +1,6 @@
 import * as ci from 'miniprogram-ci';
 import * as fs from 'fs';
-import core from '@actions/core';
+import * as core from '@actions/core';
 import { getTemporaryPath } from '../utils/path'
 import type { ActionContext } from '../types';
 

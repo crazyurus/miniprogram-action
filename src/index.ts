@@ -1,4 +1,4 @@
-import core from '@actions/core';
+import * as core from '@actions/core';
 import * as actions from './actions';
 import { getProjectPath } from './utils/path';
 import { readProjectConfig, createProject } from './utils/project';

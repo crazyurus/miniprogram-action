@@ -1,6 +1,6 @@
 import * as os from 'os';
 import * as path from 'path';
-import core from '@actions/core';
+import * as core from '@actions/core';
 
 export function getProjectPath(): string {
   const { GITHUB_WORKSPACE = '' } = process.env;
