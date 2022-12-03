@@ -23,6 +23,7 @@ async function preview(context: ActionContext): Promise<void> {
     pagePath,
     searchQuery: pageQuery,
     scene,
+    onProgressUpdate: console.log,
   });
 
   const base64 = await fs.promises.readFile(tempImagePath, 'utf-8');

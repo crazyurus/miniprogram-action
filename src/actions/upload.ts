@@ -11,6 +11,7 @@ async function upload(context: ActionContext): Promise<void> {
     setting: context.compileOptions,
     robot: context.robot,
     threads: context.threads,
+    onProgressUpdate: console.log,
   });
 }
 

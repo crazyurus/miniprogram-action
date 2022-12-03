@@ -35,5 +35,13 @@ outputs:
   preview_qrcode:
     description: "Preview the QR code of the MiniProgram"
 runs:
-  using: "node16"
-  main: "index.js"
+  using: composite
+  steps:
+    - run: npm install pnpm -g
+      shell: bash
+      working-directory: ${{ github.action_path }}
+    - run: pnpm install --frozen-lockfile
+      shell: bash
+      working-directory: ${{ github.action_path }}
+    - run: ts-node ${{ github.action_path }}/src/index.ts
+      shell: bash

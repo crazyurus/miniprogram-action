@@ -5,7 +5,7 @@ import { readProjectConfig, createProject } from './utils/project';
 import { getCompileOptions, getCIBot, getThreads } from './utils/context';
 import type { ActionType, ActionContext } from './types';
 
-export async function activate(): Promise<void> {
+async function activate(): Promise<void> {
   const actionType = core.getInput('action_type') as ActionType || 'upload';
   const projectPath = getProjectPath();
   const projectConfig = readProjectConfig(projectPath);
@@ -27,3 +27,5 @@ export async function activate(): Promise<void> {
     core.setFailed(error);
   }
 }
+
+activate();

@@ -13,43 +13,72 @@ Here's an example workflow which publishes an extension when you push to the mas
 ## Preview
 
 ```yaml
+name: Preview MiniProgram
 on:
   push:
     branches:
       - master
-name: Preview MiniProgram
 jobs:
-  deploy:
+  preview:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: crazyurus/miniprogram-action@1.0.0
+      - name: Checkout
+        uses: actions/checkout@v3
+      - id: preview
+        name: Compile
+        uses: crazyurus/miniprogram-action@1.0.1
         with:
           action_type: preview
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      - name: QR Code
+        run: echo ${{ steps.preview.outputs.preview_qrcode }}
+    outputs:
+      preview_qrcode: ${{ steps.preview.outputs.preview_qrcode }}
 ```
 
 ## Upload
 
 ```yaml
+name: Upload MiniProgram
 on:
   release:
     types:
       - created
-name: Upload MiniProgram
 jobs:
-  deploy:
+  upload:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: crazyurus/miniprogram-action@1.0.0
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Upload
+        uses: crazyurus/miniprogram-action@1.0.1
         with:
           action_type: upload
           version: 1.0.0
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
 ```
+
+# Parameters
+
+## Input
+
+| Name | Required | Description | Default Value |
+| :----: | :----: | :---- | :----: |
+| action_type | `false` | Action type, preview or upload | `upload` |
+| project_path | `false` | Project path, which contains project.config.json | `.` |
+| page_path | `false` | Page path, one of the pages in app.json |  |
+| page_query | `false` | Page query |  |
+| scene | `false` | Scene code | `1011` |
+| version | `false` | Publish version | `1.0.0` |
+| description | `false` | Release notes |  |
+
+## Output
+
+| Name | Always | Description | Default Value |
+| :----: | :----: | :---- | :----: |
+| preview_qrcode | `false` | Preview the QR code of the MiniProgram |  |
 
 # Secrets
 
