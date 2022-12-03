@@ -1,6 +1,7 @@
 import * as ci from 'miniprogram-ci';
 import * as fs from 'fs';
 import * as core from '@actions/core';
+import { onProgressUpdate } from '../utils/context';
 import { getTemporaryPath } from '../utils/path'
 import type { ActionContext } from '../types';
 
@@ -25,7 +26,7 @@ async function preview(context: ActionContext): Promise<void> {
     pagePath,
     searchQuery: pageQuery,
     scene,
-    onProgressUpdate: console.log,
+    onProgressUpdate,
   });
 
   const base64 = await fs.promises.readFile(tempImagePath, 'utf-8');

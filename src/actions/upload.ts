@@ -1,5 +1,6 @@
 import * as ci from 'miniprogram-ci';
 import * as core from '@actions/core';
+import { onProgressUpdate } from '../utils/context';
 import type { ActionContext } from '../types';
 
 async function upload(context: ActionContext): Promise<void> {
@@ -14,7 +15,7 @@ async function upload(context: ActionContext): Promise<void> {
     setting: context.compileOptions,
     robot: context.robot,
     threads: context.threads,
-    onProgressUpdate: console.log,
+    onProgressUpdate,
   });
 }
 
