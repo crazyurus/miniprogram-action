@@ -5,7 +5,7 @@ import { readProjectConfig, createProject, hasPackageJSON } from './utils/projec
 import { getCompileOptions, getCIBot, getThreads } from './utils/context';
 import type { ActionType, ActionContext } from './types';
 
-async function activate(): Promise<void> {
+export async function activate(): Promise<void> {
   const actionType = core.getInput('action_type') as ActionType || 'upload';
   const projectPath = getProjectPath();
   const projectConfig = readProjectConfig(projectPath);
@@ -21,6 +21,10 @@ async function activate(): Promise<void> {
     threads: getThreads(),
   };
 
+  if (core.isDebug()) {
+    console.debug('env', process.env);
+  }
+
   try {
     if (hasPackageJSON(project.projectPath)) {
       await actions.npm(context);
@@ -31,5 +35,3 @@ async function activate(): Promise<void> {
     core.setFailed(error);
   }
 }
-
-activate();

@@ -32,6 +32,7 @@ async function preview(context: ActionContext): Promise<void> {
   const base64 = await fs.promises.readFile(tempImagePath, 'utf-8');
 
   core.setOutput('preview_qrcode', base64);
+  core.setOutput('preview_qrcode_path', tempImagePath);
 }
 
 export default preview;

@@ -33,24 +33,10 @@ inputs:
     required: false
 outputs:
   preview_qrcode:
-    description: "Preview the QR code of the MiniProgram"
+    description: "The base64 content of the MiniProgram to preview the QR code"
+  preview_qrcode_path:
+    description: "The file path of the MiniProgram to preview the QR code"
 runs:
-  using: composite
-  steps:
-    - run: npm install pnpm -g
-      shell: bash
-      working-directory: ${{ github.action_path }}
-    - run: pnpm install --frozen-lockfile
-      shell: bash
-      working-directory: ${{ github.action_path }}
-    - run: npx ts-node --esm ./src/index.ts
-      shell: bash
-      working-directory: ${{ github.action_path }}
-      env:
-        INPUT_ACTION_TYPE: ${{ inputs.action_type }}
-        INPUT_PROJECT_PATH: ${{ inputs.project_path }}
-        INPUT_PAGE_PATH: ${{ inputs.page_path }}
-        INPUT_PAGE_QUERY: ${{ inputs.page_query }}
-        INPUT_SCENE: ${{ inputs.scene }}
-        INPUT_VERSION: ${{ inputs.version }}
-        INPUT_DESCRIPTION: ${{ inputs.description }}
+  using: "node16"
+  pre: "./scripts/install.js"
+  main: "./scripts/main.js"

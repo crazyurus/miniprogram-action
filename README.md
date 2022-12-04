@@ -32,9 +32,14 @@ jobs:
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
       - name: QR Code
-        run: echo ${{ steps.preview.outputs.preview_qrcode }}
-    outputs:
-      preview_qrcode: ${{ steps.preview.outputs.preview_qrcode }}
+        uses: peter-evans/commit-comment@v2
+        with:
+          body: |
+            Copy the following content to the address bar of the browser to open the preview QR code
+
+            ```
+            ${{ steps.preview.outputs.preview_qrcode }}
+            ```
 ```
 
 ## Upload
@@ -42,9 +47,9 @@ jobs:
 ```yaml
 name: Upload MiniProgram
 on:
-  release:
-    types:
-      - created
+  push:
+    tags:
+      - "*.*.*"
 jobs:
   upload:
     runs-on: ubuntu-latest
@@ -55,7 +60,7 @@ jobs:
         uses: crazyurus/miniprogram-action@1.0.0
         with:
           action_type: upload
-          version: 1.0.0
+          version: ${{ github.ref_name }}
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
 ```
@@ -78,7 +83,8 @@ jobs:
 
 | Name | Always | Description | Default Value |
 | :----: | :----: | :---- | :----: |
-| preview_qrcode | `false` | Preview the QR code of the MiniProgram |  |
+| preview_qrcode | `false` | The base64 content of the MiniProgram to preview the QR code |  |
+| preview_qrcode_path | `false` | The file path of the MiniProgram to preview the QR code |  |
 
 # Secrets
 
@@ -94,4 +100,6 @@ There are mainly the following primary steps:
 # Example Use Cases
 
 - Preview MiniProgram if the `master` branch has changed since the last build.
-- Upload MiniProgram when creating a release version on GitHub.
+- Upload MiniProgram when the tag is created on GitHub.
+
+Here is a example project [recruit-miniprogram](https://github.com/crazyurus/recruit-miniprogram/tree/master/.github/workflows)
