@@ -46,3 +46,11 @@ runs:
     - run: npx ts-node --esm ./src/index.ts
       shell: bash
       working-directory: ${{ github.action_path }}
+      env:
+        INPUT_ACTION_TYPE: ${{ inputs.action_type }}
+        INPUT_PROJECT_PATH: ${{ inputs.project_path }}
+        INPUT_PAGE_PATH: ${{ inputs.page_path }}
+        INPUT_PAGE_QUERY: ${{ inputs.page_query }}
+        INPUT_SCENE: ${{ inputs.scene }}
+        INPUT_VERSION: ${{ inputs.version }}
+        INPUT_DESCRIPTION: ${{ inputs.description }}

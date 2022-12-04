@@ -1,6 +1,6 @@
-import { execSync } from 'child_process';
 import * as ci from 'miniprogram-ci';
 import * as core from '@actions/core';
+import * as exec from '@actions/exec';
 import type { ActionContext } from '../types';
 
 async function npm(context: ActionContext): Promise<void> {
@@ -8,7 +8,7 @@ async function npm(context: ActionContext): Promise<void> {
 
   core.info('start npm install');
 
-  execSync('npm install', {
+  await exec.exec('npm', ['install'], {
     cwd: context.project.projectPath,
   });
 
