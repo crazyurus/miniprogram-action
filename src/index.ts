@@ -16,6 +16,7 @@ export async function activate(): Promise<void> {
     project,
     version,
     description,
+    allowIgnoreUnusedFiles: projectConfig.ignoreUploadUnusedFiles,
     compileOptions: getCompileOptions(projectConfig.setting),
     robot: getCIBot(),
     threads: getThreads(),

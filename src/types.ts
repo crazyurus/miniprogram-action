@@ -36,6 +36,7 @@ export interface ProjectConfig {
   miniprogramRoot?: string;
   compileType?: 'miniprogram' | 'plugin';
   setting: CompileOptions;
+  ignoreUploadUnusedFiles: boolean;
 }
 
 export type ActionType = 'preview' | 'upload';
@@ -47,4 +48,5 @@ export interface ActionContext {
   compileOptions: CICompileOptions;
   robot: number;
   threads: number;
+  allowIgnoreUnusedFiles: boolean;
 }

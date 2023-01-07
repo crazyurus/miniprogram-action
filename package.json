@@ -24,7 +24,7 @@
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/exec": "^1.1.1",
-    "miniprogram-ci": "1.9.3",
+    "miniprogram-ci": "1.9.5",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {

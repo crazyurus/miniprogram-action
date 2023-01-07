@@ -15,6 +15,7 @@ async function upload(context: ActionContext): Promise<void> {
     setting: context.compileOptions,
     robot: context.robot,
     threads: context.threads,
+    allowIgnoreUnusedFiles: context.allowIgnoreUnusedFiles,
     onProgressUpdate,
   });
 }

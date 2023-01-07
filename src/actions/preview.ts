@@ -26,6 +26,7 @@ async function preview(context: ActionContext): Promise<void> {
     pagePath,
     searchQuery: pageQuery,
     scene,
+    allowIgnoreUnusedFiles: context.allowIgnoreUnusedFiles,
     onProgressUpdate,
   });
 
