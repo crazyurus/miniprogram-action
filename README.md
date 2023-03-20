@@ -34,6 +34,7 @@ jobs:
       - name: QR Code
         uses: peter-evans/commit-comment@v2
         with:
+          token: ${{ secrets.PERSONAL_KEY }}
           body: |
             Copy the following content to the address bar of the browser to open the preview QR code
 
@@ -88,14 +89,22 @@ jobs:
 
 # Secrets
 
+## PRIVATE_KEY
+
 The `PRIVATE_KEY` secret is used to authenticate with WeChat when running the `miniprogram-ci` CLI. You can find out how to create this token here on the WeChat Developers: [CI](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html)
 
 There are mainly the following primary steps:
 
 1. Login to https://mp.weixin.qq.com
-2. Find "开发" - "开发设置" - "小程序代码上传"
+2. Find "开发" - "开发管理" - "开发设置" - "小程序代码上传"
 3. Generate private key and download key file, and **close IP whitelist**
-4. Copy the contents of the key file and add in GitHub repository settings. Find "Settings" - "Secrets" - "Actions", and click "New repository secret" button. Enter the "Name" as `PRIVATE_KEY`, and "Secret" as the contents of the key file
+4. Copy the contents of the key file and add in GitHub repository settings. Find "Settings" - "Secrets and variables" - "Actions", and click "New repository secret" button. Enter the "Name" as `PRIVATE_KEY`, and "Secret" as the contents of the key file
+
+## PERSONAL_KEY
+
+The `PERSONAL_KEY` secret is used to authenticate with GitHub when commit comment in your repo. You can find out how to create this token here on the GitHub Docs: [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+
+Copy the contents of the generate token and add in GitHub repository settings. Find "Settings" - "Secrets and variables" - "Actions", and click "New repository secret" button. Enter the "Name" as PERSONAL_KEY, and "Secret" as the contents of the generate token.
 
 # Example Use Cases
 
