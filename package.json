@@ -24,12 +24,12 @@
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/exec": "^1.1.1",
-    "miniprogram-ci": "1.9.5",
+    "miniprogram-ci": "1.9.6",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "@types/node": "^18.11.10",
-    "typescript": "^4.9.3"
+    "typescript": "^5.0.3"
   },
   "license": "GPL-3.0",
   "packageManager": "pnpm@7.17.1"

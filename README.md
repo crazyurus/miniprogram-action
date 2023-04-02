@@ -1,5 +1,7 @@
 # WeChat MiniProgram GitHub Action
 
+> 中文使用文档 [利用 GitHub Actions 实现小程序的持续集成](https://juejin.cn/post/7173608478768889886)
+
 A [GitHub Action](https://github.com/features/actions) to automate deploying WeChat MiniProgram by using [miniprogram-ci](https://www.npmjs.com/package/miniprogram-ci).
 
 It will enable workflows to easily preview and upload your MiniProgram to the WeChat.
