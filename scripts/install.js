@@ -7,5 +7,5 @@ function exec(command) {
   });
 }
 
-exec('npm install pnpm@8 -g');
+exec('npm install pnpm -g');
 exec('pnpm install --frozen-lockfile');

@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v3
       - id: preview
         name: Compile
-        uses: crazyurus/miniprogram-action@1.0.0
+        uses: crazyurus/miniprogram-action@2.0.0
         with:
           action_type: preview
         env:
@@ -59,7 +59,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Upload
-        uses: crazyurus/miniprogram-action@1.0.0
+        uses: crazyurus/miniprogram-action@2.0.0
         with:
           action_type: upload
           version: ${{ github.ref_name }}
