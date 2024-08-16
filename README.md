@@ -80,7 +80,7 @@ jobs:
 | scene | `false` | Scene code | `1011` |
 | version | `false` | Publish version | `1.0.0` |
 | description | `false` | Release notes |  |
-| ci | `false` | RNumber of CI | `24` |
+| ci | `false` | Number of CI | `24` |
 
 ## Output
 
