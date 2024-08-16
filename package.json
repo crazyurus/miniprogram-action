@@ -1,6 +1,6 @@
 {
   "name": "miniprogram-action",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A GitHub Action to automate deploying WeChat MiniProgram",
   "module": "./src/index.ts",
   "scripts": {},
@@ -24,7 +24,7 @@
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/exec": "^1.1.1",
-    "miniprogram-ci": "1.9.6",
+    "miniprogram-ci": "^2.0.9",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {

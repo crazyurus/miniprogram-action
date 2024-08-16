@@ -23,7 +23,7 @@ inputs:
   scene:
     description: "Scene code"
     required: false
-    default: 1011
+    default: '1011'
   version:
     description: "Publish version"
     required: false
@@ -31,6 +31,10 @@ inputs:
   description:
     description: "Release notes"
     required: false
+  ci:
+    description: "Number of CI"
+    required: false
+    default: '24'
 outputs:
   preview_qrcode:
     description: "The base64 content of the MiniProgram to preview the QR code"

@@ -2,7 +2,7 @@ import * as ci from 'miniprogram-ci';
 import * as fs from 'fs';
 import * as core from '@actions/core';
 import { onProgressUpdate } from '../utils/context';
-import { getTemporaryPath } from '../utils/path'
+import { getTemporaryPath } from '../utils/path';
 import type { ActionContext } from '../types';
 
 async function preview(context: ActionContext): Promise<void> {
@@ -18,7 +18,9 @@ async function preview(context: ActionContext): Promise<void> {
     project,
     version: context.version,
     desc: context.description,
-    setting: context.compileOptions,
+    setting: {
+      useProjectConfig: true,
+    },
     robot: context.robot,
     threads: context.threads,
     qrcodeFormat: 'base64',
